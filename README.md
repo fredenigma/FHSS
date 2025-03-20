@@ -26,14 +26,15 @@ Add the following macros to your dashboard for easy access:
 - `FHSS_SET_TIME TIME=<minutes>` – Set the heat soak duration.
 - `FHSS_SET_PARK X=<value> Y=<value> Z=<value> SPEED=<value> ENABLED=<true/false>` – Set parking position and speed.
 - `FHSS_WAIT` – Insert this command in your `START_PRINT` macro where you want the heat soak to take place.
+It is suggested to add a macro group to the main dashboard which contains the above mentioned macros: this will allow to manage the entire FHSS with a few clicks
 
 ### Example Usage in START_PRINT
 Modify your `START_PRINT` macro to include FHSS:
 ```gcode
 G28 ; Home all axes
 M190 S60 ; Heat bed to 60C
-M109 S200 ; Heat nozzle to 200C
 FHSS_WAIT ; Perform heat soaking if enabled
+M109 S200 ; Heat nozzle to 200C
 G92 E0 ; Reset extruder position
 ```
 
